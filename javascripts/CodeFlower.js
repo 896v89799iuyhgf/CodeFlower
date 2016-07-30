@@ -74,7 +74,6 @@ CodeFlower.prototype.update = function(json) {
       return "hsl(" + parseInt(360 / total * d.id, 10) + ",90%,70%)";
     })
     .call(this.force.drag)
-    .call(this.showName)
     .on("click", this.click.bind(this))
     .on("mouseover", this.mouseover.bind(this))
     .on("mouseout", this.mouseout.bind(this));
@@ -121,7 +120,7 @@ CodeFlower.prototype.click = function(d) {
   this.update();
 };
 
-CodeFlower.prototype.showName = function(d) {
+CodeFlower.prototype.mouseover = function(d) {
   var fileExt = ".hs";
   this.text.attr('transform', 'translate(' + d.x + ',' + (d.y - 5 - (d.children ? 3.5 : Math.sqrt(d.size) / 2)) + ')')
     .text(d.name.split(fileExt)[0])
