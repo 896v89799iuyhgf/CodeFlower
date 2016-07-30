@@ -121,13 +121,14 @@ CodeFlower.prototype.click = function(d) {
 };
 
 CodeFlower.prototype.mouseover = function(d) {
+  var fileExt = ".hs";
   this.text.attr('transform', 'translate(' + d.x + ',' + (d.y - 5 - (d.children ? 3.5 : Math.sqrt(d.size) / 2)) + ')')
-    .text(d.name + ": " + d.size + " loc")
+    .text(d.name.split(fileExt)[0])
     .style('display', null);
 };
 
 CodeFlower.prototype.mouseout = function(d) {
-  this.text.style('display', 'none');
+  // this.text.style('display', 'none');
 };
 
 CodeFlower.prototype.tick = function() {
